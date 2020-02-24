@@ -13,8 +13,6 @@ var guessesRemaining = 9;
 
 
 
-// ALL FUNCTIONS
-
 //GAME START FUNCTION
 
 function Game() {
@@ -31,7 +29,7 @@ function Game() {
 
     document.getElementById("currentword").innerHTML = "  " + blanksAndCorrect.join("  ");
 
-    //console logging 
+   
     console.log(randomWord);
     console.log(lettersOfWord)
     console.log(blanks)
@@ -39,9 +37,8 @@ function Game() {
 }
 
 
-//__________________________________________________________
 //RESET FUNCTION
-//__________________________________________________________
+
 function reset() {
     guessesRemaining = 9;
     wrongGuess = [];
@@ -49,29 +46,25 @@ function reset() {
     Game()
 }
 
-//__________________________________________________________
-//CHECK LETTERS/COMPARE FUNCTION
-//__________________________________________________________
 
-//If/Else, to see if letter selected matches random word
+//If/Else statement to check if word is right or wrong
 function checkLetters(letter) {
     var letterInWord = false;
-    //if the generated randomword is equal to the letter entered... then variable is true
+    //checking to see if letters = word
     for (var i = 0; i < blanks; i++) {
         if (randomWord[i] == letter) {
             letterInWord = true;
         }
     }
-    //if letterInWord (false)
-    if (letterInWord) {
-        //check each letter to see if it matches word
+    //if letters dont correlate 
+    if (letterInWord) {       
         for (var i = 0; i < blanks; i++) {
             if (randomWord[i] == letter) {
                 blanksAndCorrect[i] = letter;
             }
         }
     }
-    //otherwise, push the incorrect guess in the wrong guesses section, and reduce remaining guesses
+    //pushes wrong letters in box along with guesses remaining 
     else {
         wrongGuess.push(letter);
         guessesRemaining--;
@@ -79,51 +72,46 @@ function checkLetters(letter) {
     console.log(blanksAndCorrect);
 }
 
-//__________________________________________________________
+
 //FINAL COMPLETE FUNCTION
-//__________________________________________________________
+
 
 //check to see if player won...
 function complete() {
     console.log("wins:" + wins + "| losses:" + losses + "| guesses left:" + guessesRemaining)
 
-    //if WON...then alert, play audio, display image and reset new round
+    //if they win, adds win to wins box and resets game 
     if (lettersOfWord.toString() == blanksAndCorrect.toString()) {
         wins++;
         reset()
         //display wins on screen
         document.getElementById("winstracker").innerHTML = " " + wins;
 
-        //if LOST...then alert and reset new round
+        //if they lose, adds loss to losses box and resets game 
     } else if (guessesRemaining === 0) {
         losses++;
         reset()
         document.getElementById("losstracker").innerHTML = " " + losses;
     }
-    //display losses on screen && guesses remaining countdown
+    //displaya the current word and guesses remaining 
     document.getElementById("currentword").innerHTML = "  " + blanksAndCorrect.join(" ");
     document.getElementById("guessesremaining").innerHTML = " " + guessesRemaining;
 }
 
 
-//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-//_____________________________________________________
-// EXECUTE CODE 
-//_____________________________________________________
-
 //call start game function
 Game()
 
-//check for keyup, and convert to lowercase then store in guesses
+//looks at the keyup and puts the letters on screen as well as stores as lowercase 
 document.onkeyup = function (event) {
     var guesses = String.fromCharCode(event.keyCode).toLowerCase();
-    //check to see if guess entered matches value of random word
+    //checks if letters correlate with the word 
     checkLetters(guesses);
     //process wins/loss 
     complete();
-    //store player guess in console for reference 
+    //consoles the guesses 
     console.log(guesses);
 
-    //display/store incorrect letters on screen
+    //shows the incorrect letters on the screen 
     document.getElementById("playerguesses").innerHTML = "  " + wrongGuess.join(" ");
 }
