@@ -1,14 +1,12 @@
 //VARIABLES
-var words = [  "aang", "spongebob", "catdog", "patrick", "cosmo", "drakeandjosh"]
+var words = [  "aang", "spongebob", "catdog", "patrick", "cosmo", "drake_and_josh", "mr_crabs"]
 
-//Empty variables to store values later
+
 var randomWord = "";
 var lettersOfWord = []
 var blanks = 0;
 var blanksAndCorrect = [];
 var wrongGuess = [];
-
-//Counter Variables
 var wins = 0;
 var losses = 0;
 var guessesRemaining = 9;
@@ -16,28 +14,21 @@ var guessesRemaining = 9;
 
 
 // ALL FUNCTIONS
-//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-
-//__________________________________________________________
 //GAME START FUNCTION
-//__________________________________________________________
+
 function Game() {
-    //computer generates random word from words array
+    
     randomWord = words[Math.floor(Math.random() * words.length)];
 
-    // split the individual word into separate arrays, and store in new array 
     lettersOfWord = randomWord.split("");
-
-    //store length of word in blanks, for later use
+   
     blanks = lettersOfWord.length;
 
-    //creating a loop to generate "_" for each letter in array stored in blanks
     for (var i = 0; i < blanks; i++) {
         blanksAndCorrect.push("_");
     }
 
-    //showing the "_" within HTML
     document.getElementById("currentword").innerHTML = "  " + blanksAndCorrect.join("  ");
 
     //console logging 
