@@ -1,0 +1,81 @@
+body {
+    background-color: rgb(255, 150, 30);
+    width: 100%
+}
+
+h1 {
+    font-size: 45px;
+    border: solid 5px rgb(255, 150, 30);
+    background: rgb(168, 0, 247);
+    text-align: center;
+    margin-top: 2%;
+    margin-left: 10%;
+    margin-right:10%;
+    padding: 20px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    
+}
+
+h2 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 20px;
+    padding-top: 20px;
+}
+
+h3 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 20px;
+    padding-top: 20px;
+
+}
+
+
+img {
+    margin: 10px;
+}
+
+
+.sidebar {
+    padding: 5px;
+    position: static;
+    border-top: solid rgb(255, 150, 30) 2px;
+    border-bottom: solid rgb(194, 65, 144) 2px;
+    margin-bottom: 15px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 12px;
+}
+
+span {
+    border: solid rgb(255, 150, 30) 2px;
+    padding-left: 3px;
+    padding-right:3px;
+    background-color: rgb(255, 150, 30); 
+    font-size: 15px;
+}
+
+.background {
+    background-image: url("../images/nickelodeon1.jpg");
+    border: solid 5px rgb(168, 0, 247);
+}
+
+.container {
+    background-color: rgb(168, 0, 247);
+    margin-top: 10px;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-bottom: 10px;
+    text-align: center;
+    border: solid 5px rgb(255, 150, 30);
+}
+
+#currentword {
+    font-size: 30px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+#scoreboard {
+    padding: 20px;
+    
+}
