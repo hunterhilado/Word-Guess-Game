@@ -1,29 +1,35 @@
-//VARIABLES
+
 var words = [  "aang", "spongebob", "catdog", "patrick", "cosmo", "drake_and_josh", "mr_crabs"]
 
-
-var randomWord = "";
-var lettersOfWord = []
-var blanks = 0;
-var blanksAndCorrect = [];
-var wrongGuess = [];
+//variables for counting the wins/losses and guesses left
 var wins = 0;
 var losses = 0;
 var guessesRemaining = 9;
+//variable for randomly picking word from the array 
+var randomWord = "";
+//variable to store the letters of the word 
+var lettersOfWord = []
+var blanks = 0;
+//puts the letters in the correct blanks
+var blanksAndCorrect = [];
+//puts the incorrect letters in these blanks
+var wrongGuess = [];
+
 
 
 function Game() {
-    
+    //function for choosing a random word from the array above
     randomWord = words[Math.floor(Math.random() * words.length)];
-
-    lettersOfWord = randomWord.split("");
-   
-    blanks = lettersOfWord.length;
-
+        //splits the words in the array using the .split function
+            lettersOfWord = randomWord.split("");
+            //tells the code to use enough blanks for the randomly generated word  
+            blanks = lettersOfWord.length;
+    //logic for blanks 
     for (var i = 0; i < blanks; i++) {
+        //pushes the correct letters 
         blanksAndCorrect.push("_");
     }
-
+    //joins the correct letters to the correct letters blank 
     document.getElementById("currentword").innerHTML = "  " + blanksAndCorrect.join("  ");
 
    
@@ -35,6 +41,7 @@ function Game() {
 
 //looks at the keyup and puts the letters on screen as well as stores as lowercase 
 document.onkeyup = function (event) {
+    //The keyCode property returns the Unicode character code of the key that triggered the onkeypress event, or the Unicode key code of the key that triggered the onkeydown or onkeyup event.
     var guesses = String.fromCharCode(event.keyCode).toLowerCase();
     //checks if letters correlate with the word 
     checkLetters(guesses);
@@ -44,7 +51,7 @@ document.onkeyup = function (event) {
     console.log(guesses);
 
     //shows the incorrect letters on the screen 
-    document.getElementById("incorrectletters").innerHTML = "  " + wrongGuess.join(" ");
+    document.getElementById("wrongletters").innerHTML = "  " + wrongGuess.join(" ");
 }
 
 //if/else statement to check if word is right or wrong
@@ -52,6 +59,7 @@ function checkLetters(letter) {
     var letterInWord = false;
     //checking to see if letters = word
     for (var i = 0; i < blanks; i++) {
+        //if the random word = the letters put then it is true or correct 
         if (randomWord[i] == letter) {
             letterInWord = true;
         }
@@ -83,7 +91,7 @@ function reset() {
 }
 
 
-//check to see if player won...
+//check to see if player won/lost and the guesses left 
 function complete() {
     console.log("wins:" + wins + "| losses:" + losses + "| guessesleft:" + guessesRemaining)
 

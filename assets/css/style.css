@@ -5,8 +5,7 @@ body {
 
 h1 {
     font-size: 45px;
-    border: solid 5px rgb(255, 150, 30);
-    background: rgb(168, 0, 247);
+    background: rgb(255, 135, 36);
     text-align: center;
     margin-top: 2%;
     margin-left: 10%;
@@ -28,20 +27,6 @@ h3 {
     padding-top: 20px;
 
 }
-
-
-
-.sidebar {
-    padding: 5px;
-    position: static;
-    border-top: solid rgb(255, 150, 30) 2px;
-    border-bottom: solid rgb(194, 65, 144) 2px;
-    margin-bottom: 15px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 12px;
-}
-
-
 
 .container {
     background-color: rgb(168, 0, 247);
