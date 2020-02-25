@@ -12,9 +12,6 @@ var losses = 0;
 var guessesRemaining = 9;
 
 
-
-//GAME START FUNCTION
-
 function Game() {
     
     randomWord = words[Math.floor(Math.random() * words.length)];
@@ -36,18 +33,21 @@ function Game() {
     console.log(blanksAndCorrect)
 }
 
+//looks at the keyup and puts the letters on screen as well as stores as lowercase 
+document.onkeyup = function (event) {
+    var guesses = String.fromCharCode(event.keyCode).toLowerCase();
+    //checks if letters correlate with the word 
+    checkLetters(guesses);
+    //process wins/loss 
+    complete();
+    //consoles the guesses 
+    console.log(guesses);
 
-//RESET FUNCTION
-
-function reset() {
-    guessesRemaining = 9;
-    wrongGuess = [];
-    blanksAndCorrect = [];
-    Game()
+    //shows the incorrect letters on the screen 
+    document.getElementById("incorrectletters").innerHTML = "  " + wrongGuess.join(" ");
 }
 
-
-//If/Else statement to check if word is right or wrong
+//if/else statement to check if word is right or wrong
 function checkLetters(letter) {
     var letterInWord = false;
     //checking to see if letters = word
@@ -73,45 +73,35 @@ function checkLetters(letter) {
 }
 
 
-//FINAL COMPLETE FUNCTION
+//Resets game 
+
+function reset() {
+    guessesRemaining = 9;
+    wrongGuess = [];
+    blanksAndCorrect = [];
+    Game()
+}
 
 
 //check to see if player won...
 function complete() {
-    console.log("wins:" + wins + "| losses:" + losses + "| guesses left:" + guessesRemaining)
+    console.log("wins:" + wins + "| losses:" + losses + "| guessesleft:" + guessesRemaining)
 
     //if they win, adds win to wins box and resets game 
     if (lettersOfWord.toString() == blanksAndCorrect.toString()) {
         wins++;
         reset()
         //display wins on screen
-        document.getElementById("winstracker").innerHTML = " " + wins;
+        document.getElementById("wins").innerHTML = " " + wins;
 
         //if they lose, adds loss to losses box and resets game 
     } else if (guessesRemaining === 0) {
         losses++;
         reset()
-        document.getElementById("losstracker").innerHTML = " " + losses;
+        document.getElementById("losses").innerHTML = " " + losses;
     }
     //displaya the current word and guesses remaining 
     document.getElementById("currentword").innerHTML = "  " + blanksAndCorrect.join(" ");
-    document.getElementById("guessesremaining").innerHTML = " " + guessesRemaining;
+    document.getElementById("guessesleft").innerHTML = " " + guessesRemaining;
 }
 
-
-//call start game function
-Game()
-
-//looks at the keyup and puts the letters on screen as well as stores as lowercase 
-document.onkeyup = function (event) {
-    var guesses = String.fromCharCode(event.keyCode).toLowerCase();
-    //checks if letters correlate with the word 
-    checkLetters(guesses);
-    //process wins/loss 
-    complete();
-    //consoles the guesses 
-    console.log(guesses);
-
-    //shows the incorrect letters on the screen 
-    document.getElementById("playerguesses").innerHTML = "  " + wrongGuess.join(" ");
-}
